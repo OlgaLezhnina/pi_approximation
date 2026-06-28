@@ -1,6 +1,9 @@
 [package]
 name = "pi_wasm"
 version = "0.1.0"
+description = "A toy project with Rust and WASM to approximate the value of pi"
+license = "MIT"
+repository = "https://github.com/OlgaLezhnina/pi_approximation"
 edition = "2024"
 
 [lib]

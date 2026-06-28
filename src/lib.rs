@@ -35,7 +35,6 @@ pub fn approximate_pi() -> ArrayTuple<(Float64Array, Float64Array, js_sys::Array
         dots.push(&dot);
         count += 1;
     }
-    // let pi_approx = points_in as f64/(points_in as f64 + points_out as f64)*4.0;
     unsafe {
         let arr = Float64Array::view(&data);
         let lab = Float64Array::view(&labels);

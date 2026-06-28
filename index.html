@@ -2,34 +2,23 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>hello-wasm example</title>
+    <title>pi-wasm</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <div>
-      <div style="width: 800px;">
-        <canvas id="myDots" style="border:1px solid"></canvas>
-        <script src="dots.js"></script>
-      </div>
-      <div style="width: 800px;">
+    <div style ="width: 600px; margin-left: auto; margin-right: auto;">
         <canvas id="myChart" style="border:1px solid"></canvas>
         <script src="linechart.js"></script>
-      </div>
+        <canvas id="myDots" style="border:1px solid"></canvas>
+        <script src="dots.js"></script>
     </div>
     <script type="module">
       import init, { approximate_pi } from "./pkg/pi_wasm.js";
       init().then(() => {
-        const wtf = [{x: 10,y: 20}, {x: 15, y: 10}]
+        
         const ctx = document.getElementById('myChart');
         const ctx2 = document.getElementById('myDots');
         const [arr,labels, dots] = approximate_pi();
-        console.log(arr);
-        console.log(labels);
-        const dots_new = dots.map((element) => Object.fromEntries(element))
-        console.log(dots_new)
-        //for (const element of dots) {
-         // console.log(Object.fromEntries(element));
-        //}
         chart_pi(ctx, arr, labels);
         show_dots(ctx2, dots);
       });

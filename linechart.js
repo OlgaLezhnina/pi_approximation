@@ -1,40 +1,35 @@
 
-
-//SETUP
-
-//wasm_bindgen.foo(arr);
 function chart_pi(ctx, arr, labels) {
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: 'pi value',
-      data: arr,
-      borderWidth: 1,
-      pointRadius: 0,
-      pointHoverRadius: 2,
-      borderColor: '#000',
-      
-    }    
-  ]
-};
-//CONFIG
-const config = {
-  type: 'line',
-  data: data,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Approximated pi value'
+  //SETUP
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        data: arr,
+        borderWidth: 1,
+        pointRadius: 0,
+        pointHoverRadius: 2,
+        borderColor: '#000',
       }
-    }
-  },
-};
-//CHART
-new Chart(ctx, config);
+    ]
+  };
+  //CONFIG
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: 'Approximated pi value'
+        }
+      }
+    },
+  };
+  //CHART
+  new Chart(ctx, config);
 }
