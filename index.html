@@ -17,11 +17,10 @@
 
       init().then(() => {
         const ctx = document.getElementById('myChart');
-        var arr = new Float64Array(10);
-        var labels = new Float64Array(10);
-        let pi_value = approximate_pi(arr, labels);
+        const [arr,labels] = approximate_pi();
+        console.log(arr);
+        console.log(labels);
         chart_pi(ctx, arr, labels);
-        alert(pi_value);
       });
     </script>
   </body>
