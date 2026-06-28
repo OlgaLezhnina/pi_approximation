@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>hello-wasm example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div style="width: 800px;">
+      <canvas id="myChart" style="border:1px solid"></canvas>
+    </div>
+    <script src="linechart.js"></script>
+    
+
+    <script type="module">
+      import init, { approximate_pi } from "./pkg/pi_wasm.js";
+
+      init().then(() => {
+        const ctx = document.getElementById('myChart');
+        var arr = new Float64Array(10);
+        var labels = new Float64Array(10);
+        let pi_value = approximate_pi(arr, labels);
+        chart_pi(ctx, arr, labels);
+        alert(pi_value);
+      });
+    </script>
+  </body>
+</html>
+
