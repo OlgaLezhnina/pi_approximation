@@ -3,26 +3,25 @@
 //SETUP
 
 //wasm_bindgen.foo(arr);
-function chart_pi(ctx, arr, labels) {
+function show_dots(ctx2, dots) {
 const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: 'pi value',
-      data: arr,
-      borderWidth: 1,
-      pointRadius: 0,
-      pointHoverRadius: 2,
-      borderColor: '#000',
-      
-    }    
-  ]
+  datasets: [{
+    label: 'Approximation of pi',
+    data: dots.entries_typed,
+    backgroundColor: 'rgb(255, 99, 132)'
+  }],
 };
 //CONFIG
 const config = {
-  type: 'line',
+  type: 'scatter',
   data: data,
   options: {
+    scales: {
+      x: {
+        type: 'linear',
+        position: 'bottom'
+      }
+    },
     responsive: true,
     plugins: {
       legend: {
@@ -36,5 +35,5 @@ const config = {
   },
 };
 //CHART
-new Chart(ctx, config);
+new Chart(ctx2, config);
 }

@@ -6,21 +6,32 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <div style="width: 800px;">
-      <canvas id="myChart" style="border:1px solid"></canvas>
+    <div>
+      
+      <div style="width: 800px;">
+        <canvas id="myDots" style="border:1px solid"></canvas>
+        <script src="dots.js"></script>
+      </div>
+      <div style="width: 800px;">
+        <canvas id="myChart" style="border:1px solid"></canvas>
+        <script src="linechart.js"></script>
+      </div>
     </div>
-    <script src="linechart.js"></script>
-    
 
     <script type="module">
       import init, { approximate_pi } from "./pkg/pi_wasm.js";
 
       init().then(() => {
         const ctx = document.getElementById('myChart');
-        const [arr,labels] = approximate_pi();
+        const ctx2 = document.getElementById('myDots');
+        const [arr,labels, dots] = approximate_pi();
         console.log(arr);
         console.log(labels);
+        for (const element of dots) {
+          console.log(element.entries());
+        }
         chart_pi(ctx, arr, labels);
+        show_dots(ctx2, dots);
       });
     </script>
   </body>
